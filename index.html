@@ -42,6 +42,8 @@
         }
         .profile-link:hover {
             color: #000;
+        }
+        .profile-link:hover .profile-link-label {
             text-decoration: underline;
         }
         .profile-link + .profile-link::before {
@@ -49,7 +51,7 @@
             color: #bbb;
             margin-right: 10px;
         }
-        .contact-link {
+        .contact-link .profile-link-label {
             text-decoration: underline;
             text-underline-offset: 3px;
         }
@@ -121,17 +123,19 @@
     <div class="profile-links">
         <a href="https://neuroscience.cam.ac.uk/member/msb74/" class="profile-link">
             <img src="https://www.google.com/s2/favicons?domain=neuroscience.cam.ac.uk&amp;sz=32" alt="" class="favicon">
-            Cambridge Neuroscience
+            <span class="profile-link-label">Cambridge Neuroscience</span>
         </a>
         <a href="https://www.researchgate.net/profile/Michael-Baker-64?ev=hdr_xprf" class="profile-link">
             <img src="https://www.google.com/s2/favicons?domain=researchgate.net&amp;sz=32" alt="" class="favicon">
-            ResearchGate
+            <span class="profile-link-label">ResearchGate</span>
         </a>
         <a href="https://orcid.org/0009-0006-3078-3001" class="profile-link">
             <img src="https://www.google.com/s2/favicons?domain=orcid.org&amp;sz=32" alt="" class="favicon">
-            ORCID
+            <span class="profile-link-label">ORCID</span>
         </a>
-        <a href="mailto:contact@michaelsbakerjr.com" class="profile-link contact-link">Contact</a>
+        <a href="mailto:contact@michaelsbakerjr.com" class="profile-link contact-link">
+            <span class="profile-link-label">contact@michaelsbakerjr.com</span>
+        </a>
     </div>
 
     <section class="section-card">
