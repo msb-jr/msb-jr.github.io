@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael S. Baker Jr.</title>
+    <meta name="description" content="Personal website for Michael S. Baker Jr.">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #fafafa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #111;
+        }
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .profile-link:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+        .profile-link + .profile-link::before {
+            content: "|";
+            color: #bbb;
+            margin-right: 10px;
+        }
+        .contact-link {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .favicon {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+        .section-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #111;
+        }
+        .publication-list,
+        .work-list {
+            padding-left: 22px;
+            margin-bottom: 20px;
+        }
+        .publication,
+        .work-item {
+            margin-bottom: 18px;
+        }
+        .publication-title,
+        .work-title {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .publication-title:hover,
+        .work-title:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+        .publication-details,
+        .work-details {
+            color: #666;
+        }
+        .show-more {
+            padding: 10px 16px;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            background: #fff;
+            color: #2c3e50;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 500;
+        }
+        .show-more:hover {
+            border-color: #999;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Michael S. Baker Jr.</h1>
+    </div>
+
+    <div class="profile-links">
+        <a href="https://neuroscience.cam.ac.uk/member/msb74/" class="profile-link">
+            <img src="https://www.google.com/s2/favicons?domain=neuroscience.cam.ac.uk&amp;sz=32" alt="" class="favicon">
+            Cambridge Neuroscience
+        </a>
+        <a href="https://www.researchgate.net/profile/Michael-Baker-64?ev=hdr_xprf" class="profile-link">
+            <img src="https://www.google.com/s2/favicons?domain=researchgate.net&amp;sz=32" alt="" class="favicon">
+            ResearchGate
+        </a>
+        <a href="https://orcid.org/0009-0006-3078-3001" class="profile-link">
+            <img src="https://www.google.com/s2/favicons?domain=orcid.org&amp;sz=32" alt="" class="favicon">
+            ORCID
+        </a>
+        <a href="mailto:contact@michaelsbakerjr.com" class="profile-link contact-link">Contact</a>
+    </div>
+
+    <section class="section-card">
+        <h2>In Progress</h2>
+        <ol class="work-list">
+            <li class="work-item">
+                <a href="https://github.com/msb-jr/linear-LP-gradient" class="work-title">The microdialysis-derived lactate-pyruvate gradient indicates anaerobic activity after brain injury</a>
+                <span class="work-details">Manuscript under review at JCBFM. Analysis code available on GitHub.</span>
+            </li>
+        </ol>
+    </section>
+
+    <section class="section-card">
+        <h2>Publications</h2>
+        <ol id="publication-list" class="publication-list">
+            <li class="publication">
+                <a href="https://link.springer.com/article/10.1186/s13054-026-05993-z" class="publication-title">Consensus statement from the 2025 Delphi panel on cerebral microdialysis in critical care</a>
+                <span class="publication-details">Critical Care, 2026.</span>
+            </li>
+            <li class="publication">
+                <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0331310" class="publication-title">Defining metabolic abnormalities in acute human traumatic brain injury with cerebral microdialysis and multimodality monitoring</a>
+                <span class="publication-details">PLoS One, 2025.</span>
+            </li>
+            <li class="publication">
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S1042368025000269" class="publication-title">Multimodality Monitoring for the Management of Severe Traumatic Brain Injury</a>
+                <span class="publication-details">Neurosurgery Clinics of North America, 2025.</span>
+            </li>
+        </ol>
+        <button id="show-more-publications" class="show-more" type="button">Show more publications</button>
+    </section>
+
+    <script>
+        const publications = document.querySelectorAll(".publication");
+        const showMoreButton = document.getElementById("show-more-publications");
+        const publicationBatchSize = 5;
+        let visiblePublications = publicationBatchSize;
+
+        function updatePublicationList() {
+            publications.forEach((publication, index) => {
+                publication.hidden = index >= visiblePublications;
+            });
+
+            showMoreButton.hidden = visiblePublications >= publications.length;
+        }
+
+        showMoreButton.addEventListener("click", () => {
+            visiblePublications += publicationBatchSize;
+            updatePublicationList();
+        });
+
+        updatePublicationList();
+    </script>
+</body>
+</html>
